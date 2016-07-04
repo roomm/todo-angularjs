@@ -14,5 +14,6 @@ angular
     'ui.router',
     'ui.bootstrap',
     "ngAnimate",
-    'ngTouch'
+    'ngTouch',
+    'LocalStorageModule'
   ]);

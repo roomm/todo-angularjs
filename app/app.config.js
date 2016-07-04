@@ -1,6 +1,7 @@
 angular.module('todoAjsApp')
-  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', 'localStorageServiceProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, localStorageServiceProvider) {
 
+    localStorageServiceProvider.setPrefix('todos');
     $ocLazyLoadProvider.config({
       debug: false,
       events: true
