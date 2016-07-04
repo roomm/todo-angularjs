@@ -1,0 +1,12 @@
+.todo-item {
+  background-color: white;
+  border-radius: 5px;
+}
+.todo-item > div.action.left {
+  border-right: #4d4952 solid 1px;
+
+}
+.todo-item > div.action.right {
+  border-left: #4d4952 solid 1px;
+
+}
