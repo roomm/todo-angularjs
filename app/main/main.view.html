@@ -36,12 +36,14 @@
                   <span ng-class="{'done':todo.done}">{{todo.name}}</span>
                 </div>
                 <div class="col-xs-3 text-right">
-                  <i class="fa fa-clock-o"></i>
-                  <label class="label" ng-class="{'label-success':todo.daysToComplete>6, 'label-info':todo.daysToComplete<=6, 'label-warning':todo.daysToComplete<3, 'label-danger':todo.daysToComplete<1}">
-                    <span ng-if="todo.daysToComplete>0 && todo.daysToComplete<=6">Due to {{todo.daysToComplete}} Days</span>
-                    <span ng-if="todo.daysToComplete>6">Upcoming</span>
-                    <span ng-if="todo.daysToComplete<=0">Today</span>
-                  </label>
+                  <div ng-if="todo.due_date!==undefined">
+                    <i class="fa fa-clock-o"></i>
+                    <label class="label" ng-class="{'label-success':todo.daysToComplete>6, 'label-info':todo.daysToComplete<=6, 'label-warning':todo.daysToComplete<3, 'label-danger':todo.daysToComplete<1}">
+                      <span ng-if="todo.daysToComplete>0 && todo.daysToComplete<=6">Due to {{todo.daysToComplete}} Days</span>
+                      <span ng-if="todo.daysToComplete>6">Upcoming</span>
+                      <span ng-if="todo.daysToComplete<=0">Today</span>
+                    </label>
+                  </div>
                 </div>
                 <div class="col-xs-2 text-right">
                   <button ng-click="vm.deleteTodo(todo)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i></button>

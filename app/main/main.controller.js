@@ -47,17 +47,17 @@ angular.module('todoAjsApp')
     function calcDaysToComplete(date) {
       // Workaround
       var now = new Date().setHours(0);
-      var future =new Date(Date.parse(date)).setHours(0);
+      var future = new Date(Date.parse(date)).setHours(0);
       return Math.round((  future - now) / (1000 * 60 * 60 * 24));
     }
 
     function newTodo() {
       var txt = vm.new_todo;
-      var date = vm.todo_date;
+      var date = vm.todo_date === undefined ? undefined : vm.todo_date.toString();
 
 
       vm.todos.push({
-        "name": txt, "done": false, "due_date": date.toString()
+        "name": txt, "done": false, "due_date": date
       });
       vm.new_todo = undefined;
       vm.todo_date = undefined;
