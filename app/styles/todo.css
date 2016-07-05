@@ -1,19 +1,35 @@
+.addTask {
+  background: #f9f9f9;
+  padding: 10px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3)
+}
+
+.addTask i {
+  color: #999
+}
+
+.todo-list {
+  background: #ddd;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .3), inset 0 0 35px rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3), inset 0 0 35px rgba(0, 0, 0, .1);
+}
+
+.todo-list input[type=checkbox] {
+  width: 18px;
+  height: 18px
+}
+
 .todo-item {
-  background-color: white;
-  border-radius: 5px;
-  margin: 5px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#efefef));
+  background: -webkit-linear-gradient(top, #fff, #efefef);
+  background: -moz-linear-gradient(top, #fff, #efefef);
+  background: -o-linear-gradient(top, #fff, #efefef);
+  background: linear-gradient(to bottom, #fff, #efefef);
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .15)
 }
 
-.todo-item > div.action.left {
-  border-right: #4d4952 solid 1px;
-
-}
-
-.todo-item > div.action.right {
-  border-left: #4d4952 solid 1px;
-
-}
-
-.todo-item h2.done {
+.todo-item .done{
   text-decoration: line-through;
 }

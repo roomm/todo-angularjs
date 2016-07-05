@@ -1,28 +1,46 @@
 <div class="container">
+
   <div class="row">
-    <div class="col-md-12 padding-10">
-      <div class="input-group">
-        <input ng-keydown="$event.which === 13 && vm.newTodo()" type="text" class="form-control" ng-model="vm.new_todo" placeholder="Add task...">
-         <span class="input-group-btn">
-        <button ng-click="vm.newTodo()" class="btn btn-success" type="button"><i class="fa fa-plus-circle"></i></button>
-      </span>
+    <div class="col-sm-12 col-md-8 col-md-offset-2 ">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="addTask form-horizontal">
+            <div class="form-group row">
+              <div class="col-md-7">
+                <input ng-keydown="$event.which === 13 && vm.newTodo()" ng-model="vm.new_todo" type="text" class="form-control" placeholder="Create a task...">
+              </div>
+              <div class="col-md-3">
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-fw fa-calendar"></i>
+                  </div>
+                  <input type="text" placeholder="Choose Date" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <button ng-click="vm.newTodo()" class="btn-primary btn comment-btn">Add Task</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div ng-repeat="todo in vm.todos" class="row todo-item">
-        <div class="col-md-1 action left">
-          <button ng-click="vm.finishTodo(todo)" ng-disabled="todo.done" type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i></button>
-        </div>
-        <div class="col-md-10">
-          <h2 ng-class="{'done':todo.done}">{{todo.name}}</h2>
-        </div>
-        <div class="col-md-1 action right">
-          <button ng-click="vm.deleteTodo(todo)" type="button" class="btn btn-danger btn-circle"><i class="fa fa-times"></i></button>
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="list-group todo-list ">
+            <li ng-repeat="todo in vm.todos" class="list-group-item todo-item ">
+              <div class="row">
+                <div class="col-xs-10">
+                  <input ng-model="todo.done" class="check" type="checkbox">
+                  <span ng-class="{'done':todo.done}">{{todo.name}}</span>
+                </div>
+                <div class="col-xs-2 text-right">
+                  <button ng-click="vm.deleteTodo(todo)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i></button>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
-
