@@ -1,12 +1,24 @@
 angular.module('todoAjsApp')
-  .controller('mainController', function ($scope, $http) {
+  .controller('mainController', function ($scope, localStorageService) {
     var vm = this;
+    vm.stgKey = "todos";
+    vm.todos = getTodos();
 
-    vm.todos = [{"name": "TODO1", "done": false}, {"name": "TODO2", "done": false}, {"name": "TODO3", "done": false}]
+    $scope.$watch('vm.todos', function () {
+      localStorageService.set(vm.stgKey, vm.todos);
+    }, true);
 
     vm.newTodo = newTodo;
     vm.finishTodo = finishTodo;
     vm.deleteTodo = deleteTodo;
+
+    function getTodos() {
+      var todos = localStorageService.get(vm.stgKey);
+      if (todos == null) {
+        return [];
+      }
+      return todos;
+    }
 
     function newTodo() {
       var txt = vm.new_todo;
@@ -15,7 +27,6 @@ angular.module('todoAjsApp')
     }
 
     function finishTodo(todo) {
-      console.log("fonoshed", todo);
       if (todo !== undefined) {
         todo.done = true;
       }

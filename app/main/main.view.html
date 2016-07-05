@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12 padding-10">
       <div class="input-group">
-        <input type="text" class="form-control" ng-model="vm.new_todo" placeholder="Add task...">
+        <input ng-keydown="$event.which === 13 && vm.newTodo()" type="text" class="form-control" ng-model="vm.new_todo" placeholder="Add task...">
          <span class="input-group-btn">
         <button ng-click="vm.newTodo()" class="btn btn-success" type="button"><i class="fa fa-plus-circle"></i></button>
       </span>
@@ -21,7 +21,6 @@
         <div class="col-md-1 action right">
           <button ng-click="vm.deleteTodo(todo)" type="button" class="btn btn-danger btn-circle"><i class="fa fa-times"></i></button>
         </div>
-
       </div>
     </div>
   </div>
