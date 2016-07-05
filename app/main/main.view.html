@@ -11,27 +11,37 @@
               </div>
               <div class="col-md-3">
                 <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-fw fa-calendar"></i>
+                  <div class="input-group-btn">
+                    <button ng-click="vm.openDatePicker()" class="btn btn-default"><i class="fa fa-fw fa-calendar"></i></button>
                   </div>
-                  <input type="text" placeholder="Choose Date" class="form-control">
+                  <input uib-datepicker-popup="dd-MM-yyyy" ng-model="vm.todo_date" is-open="vm.dpPopup.opened" datepicker-options="vm.dateOptions"
+                         popup-placement="auto bottom-left" type="text" placeholder="Choose Date" class="form-control">
                 </div>
               </div>
               <div class="col-md-2">
                 <button ng-click="vm.newTodo()" class="btn-primary btn comment-btn">Add Task</button>
               </div>
+
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <ul class="list-group todo-list ">
+          <ul class="list-group todo-list">
             <li ng-repeat="todo in vm.todos" class="list-group-item todo-item ">
               <div class="row">
-                <div class="col-xs-10">
+                <div class="col-xs-7">
                   <input ng-model="todo.done" class="check" type="checkbox">
                   <span ng-class="{'done':todo.done}">{{todo.name}}</span>
+                </div>
+                <div class="col-xs-3 text-right">
+                  <i class="fa fa-clock-o"></i>
+                  <label class="label" ng-class="{'label-success':todo.daysToComplete>6, 'label-info':todo.daysToComplete<=6, 'label-warning':todo.daysToComplete<3, 'label-danger':todo.daysToComplete<1}">
+                    <span ng-if="todo.daysToComplete>0 && todo.daysToComplete<=6">Due to {{todo.daysToComplete}} Days</span>
+                    <span ng-if="todo.daysToComplete>6">Upcoming</span>
+                    <span ng-if="todo.daysToComplete<=0">Today</span>
+                  </label>
                 </div>
                 <div class="col-xs-2 text-right">
                   <button ng-click="vm.deleteTodo(todo)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i></button>
