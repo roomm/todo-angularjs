@@ -2,7 +2,7 @@ angular.module('todoAjsApp')
   .controller('mainController', function ($scope, localStorageService) {
     var vm = this;
     vm.stgKey = "todos";
-
+    vm.selectedTodo = null;
     vm.dpPopup = {
       opened: false
     };
@@ -13,10 +13,15 @@ angular.module('todoAjsApp')
       startingDay: 1
     };
 
+    vm.dragging = false;
+
     vm.todos = getTodos();
     $scope.$watch('vm.todos', function () {
-      localStorageService.set(vm.stgKey, vm.todos);
-      vm.todos = getTodos();
+      //AVOID ELEMENT DUPLICATION
+      if (!vm.dragging) {
+        localStorageService.set(vm.stgKey, vm.todos);
+        vm.todos = getTodos();
+      }
     }, true);
 
 
@@ -39,6 +44,9 @@ angular.module('todoAjsApp')
       for (var i in todos) {
         var todo = todos[i];
         todo.daysToComplete = calcDaysToComplete(todo.due_date);
+        if (todo.id === undefined) {
+          todo.id = Math.floor((Math.random() * 999999) + 1);
+        }
       }
       return todos;
     }

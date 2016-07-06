@@ -15,5 +15,6 @@ angular
     'ui.bootstrap',
     "ngAnimate",
     'ngTouch',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'dndLists'
   ]);
