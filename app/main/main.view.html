@@ -29,11 +29,13 @@
       <div class="row">
         <div class="col-xs-12">
           <ul class="list-group todo-list">
-            <li ng-repeat="todo in vm.todos" class="list-group-item todo-item ">
+            <li ng-repeat="todo in vm.todos track by $index" class="list-group-item todo-item " ng-dblclick="todo.edit=true">
               <div class="row">
                 <div class="col-xs-7">
                   <input ng-model="todo.done" class="check" type="checkbox">
-                  <span ng-class="{'done':todo.done}">{{todo.name}}</span>
+                  <span ng-if="!todo.edit" ng-class="{'done':todo.done}">{{todo.name}}</span>
+                  <input ng-if="todo.edit" ng-model="todo.name">
+
                 </div>
                 <div class="col-xs-3 text-right">
                   <div ng-if="todo.due_date!==undefined">
@@ -46,6 +48,7 @@
                   </div>
                 </div>
                 <div class="col-xs-2 text-right">
+                  <button ng-if="todo.edit" ng-click="todo.edit=false" class="btn btn-success"><i class="fa fa-save"></i></button>
                   <button ng-click="vm.deleteTodo(todo)" class="btn btn-danger"><i class="fa fa-fw fa-times"></i></button>
                 </div>
               </div>
