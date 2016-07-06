@@ -2,6 +2,7 @@ angular.module('todoAjsApp')
   .controller('mainController', function ($scope, localStorageService) {
     var vm = this;
     vm.stgKey = "todos";
+    vm.todoError = false;
     vm.selectedTodo = null;
     vm.dpPopup = {
       opened: false
@@ -61,6 +62,11 @@ angular.module('todoAjsApp')
 
     function newTodo() {
       var txt = vm.new_todo;
+      if (txt === undefined) {
+        vm.todoError = true;
+        return;
+      }
+      vm.todoError = false;
       var date = vm.todo_date === undefined ? undefined : vm.todo_date.toString();
 
 
